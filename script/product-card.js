@@ -20,7 +20,7 @@ getProductCard().then((products) => {
           <img
             src="${product.image}"
             alt="${product.title}"
-            class="object-center  w-40 h-fit m-auto transition-transform duration-300 group-hover:scale-105"
+            class="object-center  w-30 h-fit m-auto pt-6 transition-transform duration-300 group-hover:scale-105"
           />
         </div>
 
