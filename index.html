@@ -4,57 +4,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FashionFusion - Home</title>
+  <title>FashionFusion</title>
   <link rel="stylesheet" href="src/output.css">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body class="bg-gray-100 dark:bg-gray-50 text-gray-900 dark:text-white transition-colors duration-300">
 
-    <header class="px-4 mx-auto max-w-7xl sm:px-6">
-    <div class="relative pt-6 pb-16 sm:pb-24">
-        <nav class="relative flex items-center justify-between sm:h-10 md:justify-center" aria-label="Global">
-            <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
-                <div class="flex items-center justify-between w-full md:w-auto">
-                    <a href="#"><span class="sr-only">Company Name</span>
-                        <img class="w-auto h-8 sm:h-10" src="https://www.svgrepo.com/show/448244/pack.svg" loading="lazy" width="202" height="40">
-                    </a>
-                    <div class="flex items-center -mr-2 md:hidden">
-                        <button class="inline-flex items-center justify-center p-2 text-gray-400 bg-gray-50 rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-50"  type="button" aria-expanded="false">
-                            <span class="sr-only">Open main menu</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="hidden md:flex md:space-x-10 list-none">
-                <li>
-                    <a href="#" class="text-base hover:underline-offset-1 font-normal text-gray-500 list-none hover:text-gray-900"
-                        target="">Pricing</a>
-                </li>
-                <li>
-                    <a href="#" class="text-base font-normal text-gray-500 list-none hover:text-gray-900"
-                        target="">Gallary
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="text-base font-normal text-gray-500 list-none hover:text-gray-900"
-                        target="_blank">Blog
-                    </a>
-                </li>
-            </div>
-            <div class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
-                <div class="inline-flex rounded-full shadow">
-                    <div href="#"
-                        class="inline-flex items-center px-4 py-2 text-base text-gray-900 bg-white border border-transparent rounded-full cursor-pointer font-base hover:bg-gray-50 ">
-                        Sign in
-                    </div>
-                </div>
-            </div>
-        </nav>
+<header class="px-4 mx-auto max-w-7xl sm:px-6">
+  <div class="relative pt-6 pb-16 sm:pb-24">
+    <nav class="relative flex items-center justify-between sm:h-10 md:justify-center" aria-label="Global">
+      <!-- Logo & Hamburger -->
+      <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
+        <div class="flex items-center justify-between w-full md:w-auto">
+          <a href="#">
+            <img class="w-auto h-8 sm:h-10" src="https://www.svgrepo.com/show/448244/pack.svg" alt="Logo">
+          </a>
+          <div class="flex items-center -mr-2 md:hidden">
+            <button id="mobile-menu-toggle" class="p-2 text-gray-400 bg-gray-50 rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-50">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop Menu -->
+      <ul class="hidden md:flex md:space-x-10 list-none">
+        <li><a href="#" class="text-base font-normal text-gray-500 hover:text-gray-900">Pricing</a></li>
+        <li><a href="#" class="text-base font-normal text-gray-500 hover:text-gray-900">Gallery</a></li>
+        <li><a href="#" class="text-base font-normal text-gray-500 hover:text-gray-900">Blog</a></li>
+      </ul>
+
+      <!-- Sign In Button -->
+      <div class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
+        <div class="inline-flex rounded-full shadow">
+          <a href="#" class="inline-flex items-center px-4 py-2 text-base text-gray-900 bg-white border border-transparent rounded-full hover:bg-gray-50">
+            Sign in
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Mobile Sidebar Menu -->
+  <div id="mobile-menu-sidebar" class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg z-50 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+    <div class="p-4 border-b border-gray-200">
+      <button id="mobile-menu-close" class="text-gray-600 hover:text-gray-800 float-right">
+        ✕
+      </button>
+      <h2 class="text-xl font-semibold text-gray-800">Menu</h2>
     </div>
+    <ul class="flex flex-col p-4 space-y-4 text-gray-700">
+      <li><a href="#" class="hover:text-indigo-600">Pricing</a></li>
+      <li><a href="#" class="hover:text-indigo-600">Gallery</a></li>
+      <li><a href="#" class="hover:text-indigo-600">Blog</a></li>
+      <li><a href="#" class="hover:text-indigo-600">Sign in</a></li>
+    </ul>
+  </div>
 </header>
+
   
  <!-- Hero -->
   <div class="text-center mb-12">

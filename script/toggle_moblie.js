@@ -1,8 +1,18 @@
+  const toggleButton = document.getElementById('mobile-menu-toggle');
+  const closeButton = document.getElementById('mobile-menu-close');
+  const sidebar = document.getElementById('mobile-menu-sidebar');
 
-        // Mobile Menu Toggle
-        const menuButton = document.getElementById('menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+  toggleButton.addEventListener('click', () => {
+    sidebar.classList.remove('-translate-x-full');
+  });
 
-        menuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+  closeButton.addEventListener('click', () => {
+    sidebar.classList.add('-translate-x-full');
+  });
+
+  // Optional: Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!sidebar.contains(e.target) && !toggleButton.contains(e.target)) {
+      sidebar.classList.add('-translate-x-full');
+    }
+  });
