@@ -20,7 +20,7 @@ getProductCard().then((products) => {
           <img
             src="${product.image}"
             alt="${product.title}"
-            class="object-cover  w-full h-full transition-transform duration-300 group-hover:scale-105"
+            class="object-center  w-40 h-fit m-auto transition-transform duration-300 group-hover:scale-105"
           />
         </div>
 
@@ -58,7 +58,7 @@ getProductCard().then((products) => {
           <div class="mt-auto pt-4 border-t border-gray-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <span class="text-xl font-bold text-gray-900">$${product.price.toFixed(2)}</span>
             <button
-              class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-5 py-2 rounded-md shadow-md transition duration-300 w-full sm:w-auto"
+              class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-5 py-2 rounded-md cursor-pointer shadow-md transition duration-300 w-full sm:w-auto"
             >
               Add to Cart
             </button>

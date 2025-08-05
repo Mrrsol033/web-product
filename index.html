@@ -4,115 +4,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home page</title>
+  <title>FashionFusion - Home</title>
   <link rel="stylesheet" href="src/output.css">
-
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
+<body class="bg-gray-100 dark:bg-gray-50 text-gray-900 dark:text-white transition-colors duration-300">
 
-<body
-  class="bg-gray-100 overflow-y-visible dark:bg-gray-50 text-gray-900 dark:text-white transition-colors duration-300">
-  <!-- header for web page  -->
-  <!-- Header Section -->
-   <nav class="bg-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <a href="#" class="text-xl font-bold text-gray-800">FashionFusion</a>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#" class="text-gray-700 hover:text-gray-900">Home</a>
-                    <a href="#" class="text-gray-700 hover:text-gray-900">Men</a>
-                    <a href="#" class="text-gray-700 hover:text-gray-900">Women</a>
-                    <a href="#" class="text-gray-700 hover:text-gray-900">Kids</a>
-                    <a href="#" class="text-gray-700 hover:text-gray-900">Sale</a>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <button class="p-2 text-gray-700 hover:text-gray-900">
-                        <i class="fas fa-search"></i>
-                    </button>
-                    <button class="p-2 text-gray-700 hover:text-gray-900 relative" id="cart-btn">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center" id="cart-count">0</span>
-                    </button>
-                    <button class="p-2 text-gray-700 hover:text-gray-900">
-                        <i class="fas fa-user"></i>
-                    </button>
+    <header class="px-4 mx-auto max-w-7xl sm:px-6">
+    <div class="relative pt-6 pb-16 sm:pb-24">
+        <nav class="relative flex items-center justify-between sm:h-10 md:justify-center" aria-label="Global">
+            <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
+                <div class="flex items-center justify-between w-full md:w-auto">
+                    <a href="#"><span class="sr-only">Company Name</span>
+                        <img class="w-auto h-8 sm:h-10" src="https://www.svgrepo.com/show/448244/pack.svg" loading="lazy" width="202" height="40">
+                    </a>
+                    <div class="flex items-center -mr-2 md:hidden">
+                        <button class="inline-flex items-center justify-center p-2 text-gray-400 bg-gray-50 rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-50"  type="button" aria-expanded="false">
+                            <span class="sr-only">Open main menu</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
-  <!-- End Header Section -->
-
-  <!-- category -->
-   <section class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Summer Collection 2025</h1>
-            <p class="text-xl mb-8">Discover our latest trends and styles</p>
-            <button class="bg-white text-indigo-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition duration-300">Shop Now</button>
-        </div>
-    </section>
-
-
-    <!-- Featured Products -->
-    <section class="py-12 mt-3 bg-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold mb-8 text-center text-blue-600">Featured Products</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8" id="products-container">
-                <!-- Products will be loaded here via JavaScript -->
+            <div class="hidden md:flex md:space-x-10 list-none">
+                <li>
+                    <a href="#" class="text-base hover:underline-offset-1 font-normal text-gray-500 list-none hover:text-gray-900"
+                        target="">Pricing</a>
+                </li>
+                <li>
+                    <a href="#" class="text-base font-normal text-gray-500 list-none hover:text-gray-900"
+                        target="">Gallary
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="text-base font-normal text-gray-500 list-none hover:text-gray-900"
+                        target="_blank">Blog
+                    </a>
+                </li>
             </div>
-        </div>
-    </section>
+            <div class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
+                <div class="inline-flex rounded-full shadow">
+                    <div href="#"
+                        class="inline-flex items-center px-4 py-2 text-base text-gray-900 bg-white border border-transparent rounded-full cursor-pointer font-base hover:bg-gray-50 ">
+                        Sign in
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+  
+ <!-- Hero -->
+  <div class="text-center mb-12">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">Explore Our Premium Gear</h1>
+    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Top-rated tech and lifestyle essentials to power your day. Free shipping on all orders above $50.</p>
+    <div class="mt-6">
+      <button class="bg-black text-white px-6 py-3 rounded-xl cursor-pointer hover:bg-gray-800">Shop Now</button>
+    </div>
+  </div>
 
-    <!-- Product Card -->
-  <section class="container mx-auto px-6 py-4 bg-gray-50">
-    <div id="product-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 ">
+  <!-- Category Filters -->
+  <div class="flex flex-wrap justify-center gap-4 mb-10">
+    <button class="bg-gray-200 text-gray-700 px-4 py-2 cursor-pointer rounded-full hover:bg-gray-300">All</button>
+    <button class="bg-gray-200 text-gray-700 px-4 py-2 cursor-pointer rounded-full hover:bg-gray-300">Headphones</button>
+    <button class="bg-gray-200 text-gray-700 px-4 py-2 cursor-pointer rounded-full hover:bg-gray-300">Shoes</button>
+    <button class="bg-gray-200 text-gray-700 px-4 py-2 cursor-pointer rounded-full hover:bg-gray-300">Watches</button>
+    <button class="bg-gray-200 text-gray-700 px-4 py-2 cursor-pointer rounded-full hover:bg-gray-300">Accessories</button>
+  </div>
 
-      <!-- randering card product -->
+
+  <!-- Dynamic Product Section -->
+  <section class="container mx-auto px-6 py-8 bg-white">
+    <div id="product-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- JS-rendered product cards -->
     </div>
   </section>
 
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white pt-10 pb-8">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-xl font-bold mb-4 text-indigo-400">FashionFusion</h3>
+        <p class="text-gray-400">Premium clothing for everyone. Quality meets style.</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Shop</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li><a href="#" class="hover:text-white">Men</a></li>
+          <li><a href="#" class="hover:text-white">Women</a></li>
+          <li><a href="#" class="hover:text-white">Kids</a></li>
+          <li><a href="#" class="hover:text-white">Accessories</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Help</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li><a href="#" class="hover:text-white">Customer Service</a></li>
+          <li><a href="#" class="hover:text-white">Track Order</a></li>
+          <li><a href="#" class="hover:text-white">Returns & Exchanges</a></li>
+          <li><a href="#" class="hover:text-white">Shipping Info</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Contact</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li>123 Fashion Street</li>
+          <li>New York, NY 10001</li>
+          <li>info@fashionfusion.com</li>
+          <li>+1 (555) 123-4567</li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center text-gray-500 border-t border-gray-700 mt-10 pt-6">
+      &copy; 2025 FashionFusion. All rights reserved.
+    </div>
+  </footer>
 
-  <footer class="bg-gray-800 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">FashionFusion</h3>
-                    <p class="text-gray-400">Premium clothing for everyone. Quality meets style.</p>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">Shop</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white">Men</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Women</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Kids</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Accessories</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">Help</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white">Customer Service</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Track Order</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Returns & Exchanges</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Shipping Info</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4">Contact</h4>
-                    <ul class="space-y-2">
-                        <li class="text-gray-400">123 Fashion Street</li>
-                        <li class="text-gray-400">New York, NY 10001</li>
-                        <li class="text-gray-400">info@fashionfusion.com</li>
-                        <li class="text-gray-400">+1 (555) 123-4567</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2023 FashionFusion. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
+  <!-- Scripts -->
   <script src="./script/toggle_moblie.js"></script>
   <script src="./script/product-card.js"></script>
 </body>
