@@ -1,115 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FashionFusion</title>
-  <link rel="stylesheet" href="src/output.css">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <title>Premium Store - Shop the Latest</title>
+  <link rel="stylesheet" href="../src/output.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-gray-100 dark:bg-gray-50 text-gray-900 dark:text-white transition-colors duration-300">
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+  <!-- Navigation Header -->
+  <nav class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <h1 class="text-2xl font-bold text-gray-800 flex items-center">
+          <i class="fas fa-store text-blue-600 mr-2"></i>
+          <span class="hidden sm:inline">Premium Store</span>
+          <span class="sm:hidden">Store</span>
+        </h1>
 
-<header class="px-4 mx-auto max-w-7xl sm:px-6">
-  <div class="relative pt-6 pb-16 sm:pb-24">
-    <nav class="relative flex items-center justify-between sm:h-10 md:justify-center" aria-label="Global">
-      <!-- Logo & Hamburger -->
-      <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
-        <div class="flex items-center justify-between w-full md:w-auto">
-          <a href="#">
-            <img class="w-auto h-8 sm:h-10" src="https://www.svgrepo.com/show/448244/pack.svg" alt="Logo">
-          </a>
-          <div class="flex items-center -mr-2 md:hidden">
-            <button id="mobile-menu-toggle" class="p-2 text-gray-400 bg-gray-50 rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-50">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
+        <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+          <select id="categoryFilter" class="bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500">
+            <option value="all">All Categories</option>
+            <option value="electronics">Electronics</option>
+            <option value="jewelery">Jewelery</option>
+            <option value="men's clothing">Men's Clothing</option>
+            <option value="women's clothing">Women's Clothing</option>
+          </select>
+
+          <div class="relative">
+            <button id="cartButton" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition flex items-center min-h-[44px]">
+              <i class="fas fa-shopping-cart mr-2"></i>
+              <span class="hidden sm:inline">Cart </span>(<span id="cartCount">0</span>)
             </button>
+            <div id="cartBadge" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">
+              <span id="cartBadgeCount">0</span>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+  </nav>
 
-      <!-- Desktop Menu -->
-      <ul class="hidden md:flex md:space-x-10 list-none">
-        <li><a href="#" class="text-base font-normal text-gray-500 hover:text-gray-900">Pricing</a></li>
-        <li><a href="#" class="text-base font-normal text-gray-500 hover:text-gray-900">Gallery</a></li>
-        <li><a href="#" class="text-base font-normal text-gray-500 hover:text-gray-900">Blog</a></li>
-      </ul>
-
-      <!-- Sign In Button -->
-      <div class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
-        <div class="inline-flex rounded-full shadow">
-          <a href="#" class="inline-flex items-center px-4 py-2 text-base text-gray-900 bg-white border border-transparent rounded-full hover:bg-gray-50">
-            Sign in
-          </a>
-        </div>
-      </div>
-    </nav>
-  </div>
-
-  <!-- Mobile Sidebar Menu -->
-  <div id="mobile-menu-sidebar" class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg z-50 transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
-    <div class="p-4 border-b border-gray-200">
-      <button id="mobile-menu-close" class="text-gray-600 hover:text-gray-800 float-right">
-        ✕
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-16 text-center">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl sm:text-6xl font-extrabold mb-6">Explore Our Premium Gear</h1>
+      <p class="text-lg sm:text-xl max-w-2xl mx-auto mb-8 opacity-90">
+        Top-rated tech and lifestyle essentials to power your day. Free shipping on all orders above $50.
+      </p>
+      <button onclick="scrollToProducts()" class="bg-white text-blue-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 transition min-h-[44px]">
+        Shop Now
       </button>
-      <h2 class="text-xl font-semibold text-gray-800">Menu</h2>
-    </div>
-    <ul class="flex flex-col p-4 space-y-4 text-gray-700">
-      <li><a href="#" class="hover:text-indigo-600">Pricing</a></li>
-      <li><a href="#" class="hover:text-indigo-600">Gallery</a></li>
-      <li><a href="#" class="hover:text-indigo-600">Blog</a></li>
-      <li><a href="#" class="hover:text-indigo-600">Sign in</a></li>
-    </ul>
-  </div>
-</header>
-
-  
- <!-- Hero -->
-  <div class="text-center mb-12">
-    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">Explore Our Premium Gear</h1>
-    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Top-rated tech and lifestyle essentials to power your day. Free shipping on all orders above $50.</p>
-    <div class="mt-6">
-      <button class="bg-black text-white px-6 py-3 rounded-xl cursor-pointer hover:bg-gray-800">Shop Now</button>
-    </div>
-  </div>
-
-  <!-- Category Filters -->
-  <div class="flex flex-wrap justify-center gap-4 mb-10">
-    <button class="bg-gray-200 text-gray-700 px-4 py-2 cursor-pointer rounded-full hover:bg-gray-300">All</button>
-    <button class="bg-gray-200 text-gray-700 px-4 py-2 cursor-pointer rounded-full hover:bg-gray-300">Headphones</button>
-    <button class="bg-gray-200 text-gray-700 px-4 py-2 cursor-pointer rounded-full hover:bg-gray-300">Shoes</button>
-    <button class="bg-gray-200 text-gray-700 px-4 py-2 cursor-pointer rounded-full hover:bg-gray-300">Watches</button>
-    <button class="bg-gray-200 text-gray-700 px-4 py-2 cursor-pointer rounded-full hover:bg-gray-300">Accessories</button>
-  </div>
-
-
-  <!-- Dynamic Product Section -->
-  <section class="container mx-auto px-6 py-8 bg-gray-100 dark:bg-gray-50">
-    <div id="product-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      <!-- JS-rendered product cards -->
     </div>
   </section>
 
+  <!-- Loading Spinner -->
+  <div id="loadingSpinner" class="flex flex-col sm:flex-row justify-center items-center py-20 px-4">
+    <div class="w-10 h-10 border-4 border-gray-200 border-t-blue-500 rounded-full animate-spin mb-4 sm:mb-0"></div>
+    <span class="text-center sm:ml-4 text-base text-gray-600">Loading amazing products...</span>
+  </div>
+
+  <!-- Error Message -->
+  <div id="errorMessage" class="hidden text-center py-20 px-4">
+    <div class="bg-red-50 border border-red-200 rounded-lg p-6 max-w-md mx-auto">
+      <i class="fas fa-exclamation-triangle text-red-500 text-3xl mb-4"></i>
+      <h3 class="text-lg font-semibold text-red-800 mb-2">Oops! Something went wrong</h3>
+      <p class="text-base text-red-600 mb-4">Unable to load products. Please try again.</p>
+      <!-- Cart Overlay (Put BEFORE the sidebar in HTML structure!) -->
+<button id="cartOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40" onclick="closeCart()">
+
+        Retry
+      </button>
+    </div>
+  </div>
+
+  <!-- Products Section -->
+  <section class="container mx-auto px-4 py-16">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Featured Products</h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">Discover our carefully curated collection of premium items</p>
+    </div>
+    <div id="productContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- Products render here -->
+    </div>
+  </section>
+
+  <!-- Cart Sidebar -->
+  <!-- Cart Sidebar (AFTER the overlay in HTML structure) -->
+<aside id="cartSidebar" class="fixed right-0 top-0 h-full w-full sm:w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50 overflow-hidden">
+
+    <div class="p-6 h-full flex flex-col">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-bold">Shopping Cart</h2>
+        <button id="closeCart" class="text-gray-500 hover:text-gray-700 p-2">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+
+      <div id="cartItems" class="space-y-4 mb-6 flex-1 overflow-y-auto">
+        <!-- Cart items will be displayed here -->
+      </div>
+
+      <div class="border-t pt-4 mt-auto">
+        <div class="flex justify-between items-center text-xl font-bold mb-4">
+          <span>Total:</span>
+          <span id="cartTotal">$0.00</span>
+        </div>
+        <button class="w-full bg-blue-600 text-white py-4 text-base rounded-lg font-semibold hover:bg-blue-700 transition min-h-[44px]">
+          Proceed to Checkout
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Cart Overlay -->
+  <div id="cartOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40" onclick="closeCart()"></div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+    <div class="flex items-center">
+      <i class="fas fa-check-circle mr-2"></i>
+      <span id="toastMessage" class="text-base">Item added to cart!</span>
+    </div>
+  </div>
+
   <!-- Footer -->
-  <footer class="bg-gray-800 text-white pt-10 pb-8">
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+  <footer class="bg-gray-800 text-white pt-12 pb-8">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       <div>
-        <h3 class="text-xl font-bold mb-4 text-indigo-400">FashionFusion</h3>
-        <p class="text-gray-400">Premium clothing for everyone. Quality meets style.</p>
+        <h3 class="text-xl font-bold mb-4 text-indigo-400">Premium Store</h3>
+        <p class="text-base text-gray-400">Premium products for everyone. Quality meets style.</p>
       </div>
       <div>
-        <h4 class="font-bold mb-4">Shop</h4>
-        <ul class="space-y-2 text-gray-400">
-          <li><a href="#" class="hover:text-white">Men</a></li>
-          <li><a href="#" class="hover:text-white">Women</a></li>
-          <li><a href="#" class="hover:text-white">Kids</a></li>
-          <li><a href="#" class="hover:text-white">Accessories</a></li>
+        <h4 class="font-bold mb-4 text-base">Shop</h4>
+        <ul class="space-y-2 text-gray-400 text-sm">
+          <li><a href="#" class="hover:text-white">Electronics</a></li>
+          <li><a href="#" class="hover:text-white">Jewelery</a></li>
+          <li><a href="#" class="hover:text-white">Men's Clothing</a></li>
+          <li><a href="#" class="hover:text-white">Women's Clothing</a></li>
         </ul>
       </div>
       <div>
-        <h4 class="font-bold mb-4">Help</h4>
-        <ul class="space-y-2 text-gray-400">
+        <h4 class="font-bold mb-4 text-base">Help</h4>
+        <ul class="space-y-2 text-gray-400 text-sm">
           <li><a href="#" class="hover:text-white">Customer Service</a></li>
           <li><a href="#" class="hover:text-white">Track Order</a></li>
           <li><a href="#" class="hover:text-white">Returns & Exchanges</a></li>
@@ -117,23 +150,21 @@
         </ul>
       </div>
       <div>
-        <h4 class="font-bold mb-4">Contact</h4>
-        <ul class="space-y-2 text-gray-400">
+        <h4 class="font-bold mb-4 text-base">Contact</h4>
+        <ul class="space-y-2 text-gray-400 text-sm">
           <li>123 Fashion Street</li>
           <li>New York, NY 10001</li>
-          <li>info@fashionfusion.com</li>
+          <li class="break-all">info@premiumstore.com</li>
           <li>+1 (555) 123-4567</li>
         </ul>
       </div>
     </div>
-    <div class="text-center text-gray-500 border-t border-gray-700 mt-10 pt-6">
-      &copy; 2025 FashionFusion. All rights reserved.
+    <div class="text-center text-sm text-gray-500 border-t border-gray-700 mt-8 pt-6 px-4">
+      &copy; 2025 Premium Store. All rights reserved.
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="./script/toggle_moblie.js"></script>
+  <script src="./script/itemShop.js"></script>
   <script src="./script/product-card.js"></script>
 </body>
-
 </html>

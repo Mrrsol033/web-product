@@ -1,73 +1,102 @@
-const productContainer = document.getElementById("product-container");
 
-const getProductCard = async () => {
-  const BASE_URL = "https://fakestoreapi.com";
-  const res = await fetch(`${BASE_URL}/products`);
-  if (!res.ok) {
-    throw new Error("Failed to fetch product data");
-  }
-  const products = await res.json();
-  return products;
-};
+    // Generate star rating
+    function generateStars(rating) {
+      const fullStars = Math.floor(rating);
+      const hasHalfStar = rating % 1 !== 0;
+      let stars = '';
+      
+      for (let i = 0; i < fullStars; i++) {
+        stars += '<i class="fas fa-star"></i>';
+      }
+      
+      if (hasHalfStar) {
+        stars += '<i class="fas fa-star-half-alt"></i>';
+      }
+      
+      const emptyStars = 5 - Math.ceil(rating);
+      for (let i = 0; i < emptyStars; i++) {
+        stars += '<i class="far fa-star"></i>';
+      }
+      
+      return stars;
+    }
 
-getProductCard().then((products) => {
-  const cards = products.map((product) => {
-    return `
-      <div class="group bg-white rounded-[6px] shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col">
-        
-        <!-- Product Image -->
-        <div class="relative h-48 w-full overflow-hidden rounded-t-[6px]">
-          <img
-            src="${product.image}"
-            alt="${product.title}"
-            class="object-center  w-30 h-fit m-auto pt-6 transition-transform duration-300 group-hover:scale-105"
-          />
+    // Add item to cart
+    function addToCart(productId) {
+      const product = products.find(p => p.id === productId);
+      const existingItem = cart.find(item => item.id === productId);
+
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+
+      updateCartUI();
+      showToast('Item added to cart!');
+      
+      // Add bounce animation to cart button
+      cartButton.classList.add('cart-bounce');
+      setTimeout(() => cartButton.classList.remove('cart-bounce'), 600);
+    }
+
+    // Remove item from cart
+    function removeFromCart(productId) {
+      cart = cart.filter(item => item.id !== productId);
+      updateCartUI();
+      displayCartItems();
+    }
+
+    // Update cart UI
+    function updateCartUI() {
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+      cartCount.textContent = totalItems;
+      cartTotal.textContent = `$${totalPrice.toFixed(2)}`;
+      
+      if (totalItems > 0) {
+        cartBadge.classList.remove('hidden');
+        cartBadgeCount.textContent = totalItems;
+      } else {
+        cartBadge.classList.add('hidden');
+      }
+    }
+
+    // Display cart items
+    function displayCartItems() {
+      if (cart.length === 0) {
+        cartItems.innerHTML = `
+          <div class="text-center py-8">
+            <i class="fas fa-shopping-cart text-gray-300 text-4xl mb-4"></i>
+            <p class="text-gray-500">Your cart is empty</p>
+          </div>
+        `;
+        return;
+      }
+
+      const cartHTML = cart.map(item => `
+        <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+          <img src="${item.image}" alt="${item.title}" class="w-12 h-12 object-contain">
+          <div class="flex-grow">
+            <h4 class="font-medium text-sm line-clamp-2">${item.title}</h4>
+            <p class="text-sm text-gray-600">$${item.price.toFixed(2)} × ${item.quantity}</p>
+          </div>
+          <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700">
+            <i class="fas fa-trash"></i>
+          </button>
         </div>
+      `).join('');
 
-        <!-- Card Content -->
-        <div class="p-4 flex flex-col flex-grow">
+      cartItems.innerHTML = cartHTML;
+    }
 
-          <!-- Category -->
-          <div class="mb-2">
-            <span class="inline-flex items-center text-xs font-semibold text-blue-700 bg-blue-100 px-2 py-0.5 rounded-full">
-              <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M2 10a8 8 0 1116 0A8 8 0 012 10zm8-5a1 1 0 00-1 1v3H6a1 1 0 000 2h3v3a1 1 0 002 0v-3h3a1 1 0 000-2h-3V6a1 1 0 00-1-1z" />
-              </svg>
-              <span>${product.category}</span>
-            </span>
-          </div>
+    function openCart() {
+  cartSidebar.classList.remove('translate-x-full');
+  cartOverlay.classList.remove('opacity-0', 'pointer-events-none');
+}
 
-          <!-- Title -->
-          <h3 class="text-lg font-semibold text-gray-900 mb-1">${product.title}</h3>
-
-          <!-- Description -->
-          <p class="text-sm text-gray-600 mb-4 line-clamp-2">
-            ${product.description}
-          </p>
-
-          <!-- Rating -->
-          <div class="flex items-center text-yellow-400 mb-4">
-            <div class="flex space-x-1">
-              ${'★'.repeat(Math.round(product.rating.rate))}
-              ${'☆'.repeat(5 - Math.round(product.rating.rate))}
-            </div>
-            <span class="ml-2 text-sm text-amber-600">(${product.rating.rate})</span>
-          </div>
-
-          <!-- Price & Button -->
-          <div class="mt-auto pt-4 border-t border-gray-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <span class="text-xl font-bold text-gray-900">$${product.price.toFixed(2)}</span>
-            <button
-              class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-5 py-2 rounded-md cursor-pointer shadow-md transition duration-300 w-full sm:w-auto"
-            >
-              Add to Cart
-            </button>
-          </div>
-
-        </div>
-      </div>
-    `;
-  });
-
-  productContainer.innerHTML = cards.join("");
-});
+function closeCart() {
+  cartSidebar.classList.add('translate-x-full');
+  cartOverlay.classList.add('opacity-0', 'pointer-events-none');
+}
